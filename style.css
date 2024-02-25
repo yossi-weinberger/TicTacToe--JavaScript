@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: cursive;
+  font-size: 60px;
+  text-align: center;
+  margin: 30px 0 0 0 ;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("background.webp");
+}
+.ttt {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 3fr);
+  gap: 10px;
+  width: 15%;
+  height: 30%;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+.ttt button {
+  height: 200px;
+  width: 200px;
+  border-radius: 35%;
+  font-size: 500%;
+  font-family: cursive;
+  font-weight: bold;
+  cursor: pointer;
+  scale: 1;
+  transition: all 0.5s ease;
+}
+
+.ttt button:hover {
+  scale: 1.05;
+  background-color: rgb(237, 237, 121);
+  transition: all 0.5s ease;
+}
+
+div.ttt {
+  display: grid;
+  grid-template-columns: repeat(3, 3fr);
+  gap: 10px;
+  width: 15%;
+  height: 30%;
+}

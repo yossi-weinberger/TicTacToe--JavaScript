@@ -6,7 +6,7 @@ var moves = [
 ];
 
 // Define the colors for the players
-const colors2 = ["lightgreen", "lightblue"];
+const colors2 = ["lightpink", "lightblue"];
 var color_count = 0;
 
 // Define the letters for the players
@@ -42,8 +42,11 @@ function chack_winner() {
   for (let i = 0; i < 3; i++) {
     console.log(i);
     if (moves[i][0] + moves[i][1] + moves[i][2] === 3) {
+      win_color_row(i);
       lose_msg();
     } else if (moves[i][0] + moves[i][1] + moves[i][2] === 15) {
+      // Get the buttons
+      win_color_row(i);
       win_msg();
     }
   }
@@ -52,22 +55,28 @@ function chack_winner() {
   for (let i = 0; i < 3; i++) {
     console.log(i);
     if (moves[0][i] + moves[1][i] + moves[2][i] === 3) {
+      win_color_column(i);
       lose_msg();
     } else if (moves[0][i] + moves[1][i] + moves[2][i] === 15) {
+      win_color_column(i);
       win_msg();
     }
   }
 
   // Check diagonals for win
   if (moves[0][0] + moves[1][1] + moves[2][2] === 3) {
+    win_color_diagnall_left();
     lose_msg();
   } else if (moves[0][0] + moves[1][1] + moves[2][2] === 15) {
+    win_color_diagnall_left();
     win_msg();
   }
 
   if (moves[0][2] + moves[1][1] + moves[2][0] === 3) {
+    win_color_diagnall_right();
     lose_msg();
   } else if (moves[0][2] + moves[1][1] + moves[2][0] === 15) {
+    win_color_diagnall_right();
     win_msg();
   }
 }
@@ -84,4 +93,42 @@ function lose_msg() {
   setTimeout(function () {
     window.alert("You lose");
   }, 1000);
+}
+
+function win_color_row(i) {
+  // Get the buttons
+  let button0 = document.getElementById(i * 3);
+  let button1 = document.getElementById(i * 3 + 1);
+  let button2 = document.getElementById(i * 3 + 2);
+  color_change(button0, button1, button2);
+}
+
+function win_color_column(i) {
+  // Get the buttons
+  let button0 = document.getElementById(i);
+  let button1 = document.getElementById(i + 3);
+  let button2 = document.getElementById(i + 6);
+  color_change(button0, button1, button2);
+}
+
+function win_color_diagnall_left() {
+  // Get the buttons
+  let button0 = document.getElementById(0);
+  let button1 = document.getElementById(4);
+  let button2 = document.getElementById(8);
+  color_change(button0, button1, button2);
+}
+
+function win_color_diagnall_right() {
+  // Get the buttons
+  let button0 = document.getElementById(2);
+  let button1 = document.getElementById(4);
+  let button2 = document.getElementById(6);
+  color_change(button0, button1, button2);
+}
+
+function color_change(button0, button1, button2) {
+  button0.style.backgroundColor = "lightgreen";
+  button1.style.backgroundColor = "lightgreen";
+  button2.style.backgroundColor = "lightgreen";
 }
